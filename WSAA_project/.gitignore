@@ -27,6 +27,4 @@ Thumbs.db
 # Jupyter
 .ipynb_checkpoints/
 
-# Scratch / testing files
-scratch_*.py
-test_*.py
+

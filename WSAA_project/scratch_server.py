@@ -1,10 +1,15 @@
 from flask import Flask, jsonify, request
+from flask import render_template
 from scratch_bookingDAO import BookingDAO
 
 app = Flask(__name__)
 
 bookingDAO = BookingDAO()
 
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 # get all bookings
 @app.route('/bookings')
