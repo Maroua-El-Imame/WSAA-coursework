@@ -1,0 +1,3 @@
+mysql = {
+    'database': 'hotel.db'
+}
