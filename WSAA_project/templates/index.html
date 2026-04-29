@@ -10,6 +10,18 @@
 <div class="container">
     <h1>Hotel Bookings</h1>
 
+    <form id="bookingForm">
+    <input type="text" id="first_name" placeholder="First name" required>
+    <input type="text" id="last_name" placeholder="Last name" required>
+    <input type="text" id="room_type" placeholder="Room type" required>
+    <input type="date" id="check_in" required>
+    <input type="date" id="check_out" required>
+    <input type="number" id="guests" placeholder="Guests" required>
+    <input type="text" id="guest_country" placeholder="Country" required>
+
+    <button type="submit">Add Booking</button>
+</form>
+
     <button id="loadBtn">Show Bookings</button>
 
     <div id="bookings"></div>
@@ -28,6 +40,7 @@ document.getElementById("loadBtn").addEventListener("click", async () => {
         card.className = "card";
 
         card.innerHTML = `
+            <h4>Booking number ${b.booking_id}</h4>
             <h3>${b.first_name} ${b.last_name}</h3>
             <p>Room: ${b.room_type}</p>
             <p>Check-in: ${b.check_in}</p>
@@ -37,6 +50,51 @@ document.getElementById("loadBtn").addEventListener("click", async () => {
         `;
 
         container.appendChild(card);
+    });
+});
+
+document.getElementById("bookingForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const booking = {
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value,
+        room_type: document.getElementById("room_type").value,
+        check_in: document.getElementById("check_in").value,
+        check_out: document.getElementById("check_out").value,
+        guests: parseInt(document.getElementById("guests").value),
+        guest_country: document.getElementById("guest_country").value
+    };
+
+    await fetch("/bookings", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(booking)
+    });
+
+    document.getElementById("bookingForm").reset();
+const res = await fetch("/bookings");
+const data = await res.json();
+
+const container = document.getElementById("bookings");
+container.innerHTML = "";
+
+data.forEach(b => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <h3>${b.first_name} ${b.last_name}</h3>
+        <p>Room: ${b.room_type}</p>
+        <p>Check-in: ${b.check_in}</p>
+        <p>Check-out: ${b.check_out}</p>
+        <p>Guests: ${b.guests}</p>
+        <p>Country: ${b.guest_country}</p>
+    `;
+
+    container.appendChild(card);
     });
 });
 </script>
