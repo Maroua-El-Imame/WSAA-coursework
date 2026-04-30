@@ -80,19 +80,24 @@ class BookingDAO:
     def create(self, booking):
         cursor = self.getcursor()
 
-        cursor.execute("""
-            INSERT INTO bookings 
-            (first_name, last_name, room_type, check_in, check_out, guests, guest_country)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (
-            booking["first_name"],
-            booking["last_name"],
-            booking["room_type"],
-            booking["check_in"],
-            booking["check_out"],
-            booking["guests"],
-            booking["guest_country"]
-        ))
+        sql = f""""INSERT INTO bookings 
+        (first_name, last_name, room_type, check_in, check_out, guests, guest_country)
+        VALUES = (  
+            "{booking.get("first_name")}",
+            "{booking.get("last_name")}",
+            "{booking.get("room_type")}",
+            "{booking.get("check_in")}",
+            "{booking.get("check_out")}",
+            {booking.get("guests")},
+            "{booking.get("guest_country")}"
+        )"""
+
+        print(sql)
+        cursor.execute(sql)
+    
+        self.connection.commit()
+        new_id = cursor.lastrowid
+        booking["booking_id"] = new_id
 
         self.closeAll()
         return booking
@@ -102,26 +107,19 @@ class BookingDAO:
         conn = sqlite3.connect(self.database)
         cursor = conn.cursor()
 
-        cursor.execute("""
-            UPDATE bookings SET
-                first_name = ?,
-                last_name = ?,
-                room_type = ?,
-                check_in = ?,
-                check_out = ?,
-                guests = ?,
-                guest_country = ?
-            WHERE booking_id = ?
-        """, (
-            booking["first_name"],
-            booking["last_name"],
-            booking["room_type"],
-            booking["check_in"],
-            booking["check_out"],
-            booking["guests"],
-            booking["guest_country"],
-            id
-        ))
+        sql = f"""UPDATE bookings SET
+                first_name = "{booking.get("first_name")}",
+                last_name = "{booking.get("last_name")}",
+                room_type = "{booking.get("room_type")}",
+                check_in = "{booking.get("check_in")}",
+                check_out = "{booking.get("check_out")}",
+                guests = {booking.get("guests")},
+                guest_country = "{booking.get("guest_country")}"
+            WHERE booking_id = {id}
+        
+        """
+        print(sql)
+        cursor.execute(sql)
 
         conn.commit()
         conn.close()
