@@ -80,16 +80,19 @@ class BookingDAO:
     def create(self, booking):
         cursor = self.getcursor()
 
-        sql = f""""INSERT INTO bookings 
-        (first_name, last_name, room_type, check_in, check_out, guests, guest_country)
-        VALUES = (  
+        sql = f""""
+        INSERT INTO bookings 
+        (first_name, last_name, room_type, check_in, check_out, guests, guest_country, price_per_night, breakfast)
+        VALUES (
             "{booking.get("first_name")}",
             "{booking.get("last_name")}",
             "{booking.get("room_type")}",
             "{booking.get("check_in")}",
             "{booking.get("check_out")}",
             {booking.get("guests")},
-            "{booking.get("guest_country")}"
+            "{booking.get("guest_country")}",
+            {booking.get("price_per_night")},
+            {booking.get("breakfast")}
         )"""
 
         print(sql)
@@ -107,7 +110,8 @@ class BookingDAO:
         conn = sqlite3.connect(self.database)
         cursor = conn.cursor()
 
-        sql = f"""UPDATE bookings SET
+        sql = f"""
+        UPDATE bookings SET
                 first_name = "{booking.get("first_name")}",
                 last_name = "{booking.get("last_name")}",
                 room_type = "{booking.get("room_type")}",
@@ -115,9 +119,11 @@ class BookingDAO:
                 check_out = "{booking.get("check_out")}",
                 guests = {booking.get("guests")},
                 guest_country = "{booking.get("guest_country")}"
+                price_per_night = {booking.get("price_per_night")},
+                breakfast = {booking.get("breakfast")}  
             WHERE booking_id = {id}
-        
         """
+        
         print(sql)
         cursor.execute(sql)
 
