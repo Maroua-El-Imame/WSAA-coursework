@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #7b7bcd09, #fcfcfc01);
+    /* navy blue */
+
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* header */
+
+h1 {
+
+    
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #000075;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.wave-line {
+  text-align: center;
+  font-size: 22px;
+  color: #0A1F44;
+  letter-spacing: 8px;
+  margin: 10px 0 20px;
+  opacity: 0.8;
+}
+
+
+/* TEST: temporary image size */
+
+img {
+  width: 700px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 10px;
+
+}
+
+/* TEST button colors, sizes and other form styling - */
+
+.button-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+
+}
+  button {
+    margin-bottom: 30px;
+    width: 100%;           /* full width */
+    max-width: 300px;      /* optional limit */
+    padding: 12px 20px;    /* bigger feel */
+    border-radius: 25px;   /* rounded edges */
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4722ebeb;
+    color: white;
+}
+/*
+button {
+    background-color: #5C5CFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+*/
+button:hover {
+    background-color: #1d4ed8;
+}
+
+#backBtn {
+    width: 100%;
+    max-width: 300px;
+    margin: 15px auto;
+    display: none;
+}
+
+#bookings {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+#weatherBackBtn {
+    width: 100%;
+    max-width: 300px;
+    margin: 15px auto;
+}
+
+/* Weather section styling */
+.weather-section {
+    display: none;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.weather-note {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.weather-card {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 420px;
+    border-radius: 15px;
+    background: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.weather-section {
+    display: none;
+}
+
+#bookingForm button[type="submit"] {
+    display: block;
+    margin: 20px auto 35px;
+    width: 100%;
+    max-width: 300px;
+}

@@ -2,102 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hotel Bookings</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title> Blue Bay Hotel </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
+
+
+
 <body>
 
 <div class="container">
-    <h1>Hotel Bookings</h1>
+    <img src="{{ url_for('static', filename='images/hotel1.png') }}" alt="Hotel Image"> <!-- Add a hotel image for visual appeal -->
+    <h1>Blue Bay Hotel    </h1>
+
+    <p class="wave-line">~ ~ ~ ~ ~ ~ ~ ~</p> <!--decorative wave line for a coastal vibe-->
 
     <form id="bookingForm">
     <input type="text" id="first_name" placeholder="First name" required>
     <input type="text" id="last_name" placeholder="Last name" required>
-    <input type="text" id="room_type" placeholder="Room type" required>
+
+<select id="room_type" required>
+    <option value="">Select room</option>
+    <option value="Claddagh Suite">Claddagh Suite</option>
+    <option value="Blue Bay Rooftop">Blue Bay Rooftop</option>
+    <option value="Royal Green">Royal Green</option>
+    <option value="Red Zebra Twin">Red Zebra Twin</option>
+</select>
+
     <input type="date" id="check_in" required>
     <input type="date" id="check_out" required>
     <input type="number" id="guests" placeholder="Guests" required>
     <input type="text" id="guest_country" placeholder="Country" required>
 
-    <button type="submit">Add Booking</button>
+    <input type="number" id="price_per_night" placeholder="Price per night (select room first)" required readonly>    <!-- This will be auto-filled based on room selection , read only option-->
+    <select id="breakfast">
+    <option value="1" selected>Breakfast included (+€15pp)</option>
+    <option value="0">Room only</option>
+    </select>
+
+    <button type="submit">Book Now </button>
 </form>
 
-    <button id="loadBtn">Show Bookings</button>
+<!-- Button row for showing bookings and checking weather -->
 
-    <div id="bookings"></div>
+   <div class="button-row">
+    <button id="loadBtn" type="button">Show Bookings</button>
+    <button id="weatherBtn" type="button">Check Weather</button>
 </div>
 
-<script>
-document.getElementById("loadBtn").addEventListener("click", async () => {
-    const res = await fetch("/bookings");
-    const data = await res.json();
 
-    const container = document.getElementById("bookings");
-    container.innerHTML = "";
 
-    data.forEach(b => {
-        const card = document.createElement("div");
-        card.className = "card";
 
-        card.innerHTML = `
-            <h4>Booking number ${b.booking_id}</h4>
-            <h3>${b.first_name} ${b.last_name}</h3>
-            <p>Room: ${b.room_type}</p>
-            <p>Check-in: ${b.check_in}</p>
-            <p>Check-out: ${b.check_out}</p>
-            <p>Guests: ${b.guests}</p>
-            <p>Country: ${b.guest_country}</p>
-        `;
+<!-- Bookings display section -->
+    <div id="bookings"></div>
+    
+    <button id="backBtn" type="button" style="display: none;">Hide Bookings</button>
 
-        container.appendChild(card);
-    });
-});
+<!-- Weather section -->
 
-document.getElementById("bookingForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
 
-    const booking = {
-        first_name: document.getElementById("first_name").value,
-        last_name: document.getElementById("last_name").value,
-        room_type: document.getElementById("room_type").value,
-        check_in: document.getElementById("check_in").value,
-        check_out: document.getElementById("check_out").value,
-        guests: parseInt(document.getElementById("guests").value),
-        guest_country: document.getElementById("guest_country").value
-    };
+<section class="weather-section">
+    <h2>Check Galway Weather for Your Stay</h2>
+    <p class="weather-note">Forecast available up to 15 days ahead.</p>
+    <div id="weatherResult"></div>
+    <button id="weatherBackBtn" type="button" style="display: none;"> Hide Weather</button>
+</section>
+</div>
 
-    await fetch("/bookings", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(booking)
-    });
-
-    document.getElementById("bookingForm").reset();
-const res = await fetch("/bookings");
-const data = await res.json();
-
-const container = document.getElementById("bookings");
-container.innerHTML = "";
-
-data.forEach(b => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-        <h3>${b.first_name} ${b.last_name}</h3>
-        <p>Room: ${b.room_type}</p>
-        <p>Check-in: ${b.check_in}</p>
-        <p>Check-out: ${b.check_out}</p>
-        <p>Guests: ${b.guests}</p>
-        <p>Country: ${b.guest_country}</p>
-    `;
-
-    container.appendChild(card);
-    });
-});
-</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
 </html>
+
+
