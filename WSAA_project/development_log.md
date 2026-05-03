@@ -1,79 +1,110 @@
-## Developpment Log 
+## Development Log 
 
-This document records the step-by-step development of the hotel booking application, including database setup, backend implementation, and frontend integration.
+This log records the main development stages of the Blue Bay Hotel booking application.  
 
+### 1. Environment Setup
 
-### Environment Setup
-- [x] Create virtual environment  
-- [x] Activate virtual environment  
-- [x] Install required packages (Flask)  
-
----  
-
-### SQLite Database Setup
-- [x] Create `dbconfig.py` to store SQLite database name
-- [x] Create `schema.sql` for bookings table
-- [x] Create `createschema.py` to generate database
-- [x] Run schema script to create `hotel.db`
-- [x] Verify database using SQLite viewer
+- [x] Created project folder structure
+- [x] Created `development_log.md` and README.md
+- [x] Created and activated virtual environment  
+- [x] Installed required packages  
+- [x] Created requirements.txt
 
 ---  
 
-### Flask Server
-- [x] Create Flask server file (`main.py`)  
-- [x] Run Flask development server  
-- [x] Configure basic application structure  
-- [x] Create API route (`/bookings`)  
-- [x] Test route in browser  
+### 2. Database Setup
 
+- [x] Created `dbconfig.py` to store SQLite database filename
+- [x] Created `schema.sql` for the `bookings` table
+- [x] Created `createschema.py` to generate the database
+- [x] Generated `hotel.db`
+- [x] Verified the database using SQLite viewer  
+
+---
+
+### 3. DAO Layer
+
+- [x] Created `bookingDAO.py`
+- [x] Connected DAO to `hotel.db` 
+- [x] Implemented `getAll()` method  
+- [x] Implemented `findByID()` method  
+- [x] Implemented  `create()`
+- [ ] Started `update()` functionality
+- [ ] Implemented `delete()`
+- [x] Testing DAO independently  
 
 ---  
 
-### DAO Layer
-- [x] Create DAO file (`bookingDAO.py`)  
-- [x] Design booking data structure  
-- [x] Implement `getAll()` method  
-- [x] Implement `findByID()` method  
-- [x] Implement sample `create()`, `update()`, and `delete()` methods  
-- [x] Test DAO independently  
+### 4. Flask Server
 
----
-
-### Integration (Flask + DAO)
-- [x] Import DAO into Flask server  
-- [x] Instantiate DAO object  
-- [x] Connect Flask route to DAO method  
-- [x] Return JSON response from DAO through Flask  
-- [x] Verify end-to-end functionality in browser  
-
-
----
-### Frontend (HTML + JavaScript)
-- [x] Create HTML template (`index.html`)
-- [x] Add CSS styling
-- [x] Display bookings using GET request
-- [x] Add booking form (POST request)
-- [x] Display booking reference in User Interface
-- [x] Implement DELETE functionality via API
-
----
-
-##  Next Steps
-- [ ] Connect DAO to external database  
-- [ ] Replace sample data with real database queries  
-- [ ] Test database integration  
-- [ ] Add additional API endpoints if required  
+- [x] Created Flask server file: (`main.py`)
+- [x] Created homepage route
+- [x] Created `/bookings` API route
+- [x] Connected Flask routes to DAO methods
+- [x] Returned booking data as JSON
+- [x] Tested API route in browser  
 - [ ] Implement error handling  
+
+---
+
+### 5. Frontend
+
+- [x] Created `index.html`
+- [x] Created CSS styling
+- [x] Created JavaScript file
+- [x] Used `fetch()` to display bookings
+- [x] Added booking form
+- [x] Added booking reference display after submission
+- [x] Added room price logic
+- [x] Added breakfast option
+- [ ] Add update functionality through the interface
+- [ ] Add delete functionality through the interface
+- [ ] Improve user Experience
+
+---
+
+### 6. Deployment
+
+- [x] Deployed the Flask application on PythonAnywhere
+- [x] Pulled project files from GitHub to PythonAnywhere
+- [x] Tested live application
+
+---
+
+### 7. Additional Features
+
+- [x] Added Weather API feature
+- [x] Displayed current 'Galway' weather information in the user interface
+
+*!! Potential Future Features*
+
+- [ ] Add availability feature
+- [ ] Add rooms section
+- [ ] Add guest country/provenance feature
+- [ ] Explore additional analysis features such as bookings by date or guest country summary
+
+---
+
+### 8. Final Improvements
+
+- [ ] Improve layout and spacing
+- [ ] Final testing
+- [ ] Final README update
 - [ ] Finalise project documentation  
 
-### Next Steps
-- [ ] Implement show/hide toggle for bookings
-- [ ] Add delete button directly in User Interface
-- [ ] Add rooms table
-- [ ] Add breakfast option
-- [ ] Add pricing logic
-- [ ] Improve User Experience
-- [ ] Prepare deployment on PythonAnywhere
+---
 
+### 9. Current Status
+
+The application currently supports:  
+
+- Viewing bookings
+- Creating new bookings
+- Displaying bookings grid
+- Automatically assigning room prices
+- Recording breakfast choice
+- Checking 'Galway city' weather  
+- Running locally and on PythonAnywhere
 
 ---
+
