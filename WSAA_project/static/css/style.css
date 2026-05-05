@@ -81,6 +81,8 @@ button:hover {
     background-color: #1d4ed8;
 }
 
+
+
 #backBtn {
     width: 100%;
     max-width: 300px;
@@ -139,4 +141,13 @@ button:hover {
     margin: 20px auto 35px;
     width: 100%;
     max-width: 300px;
+}
+
+.update-btn {
+    margin-top: 10px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
 }

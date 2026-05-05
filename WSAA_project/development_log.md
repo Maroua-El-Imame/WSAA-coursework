@@ -29,7 +29,7 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 - [x] Implemented `getAll()` method  
 - [x] Implemented `findByID()` method  
 - [x] Implemented  `create()`
-- [ ] Started `update()` functionality
+- [x] Implemented `update()` functionality
 - [ ] Implemented `delete()`
 - [x] Testing DAO independently  
 
@@ -57,9 +57,9 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 - [x] Added booking reference display after submission
 - [x] Added room price logic
 - [x] Added breakfast option
-- [ ] Add update functionality through the interface
+- [x] Add update functionality through the interface
 - [ ] Add delete functionality through the interface
-- [ ] Improve user Experience
+- [~] Improve user Experience
 
 ---
 
@@ -87,9 +87,9 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 
 ### 8. Final Improvements
 
-- [ ] Improve layout and spacing
+- [x] Improve layout and spacing
 - [ ] Final testing
-- [ ] Final README update
+- [x] Final README update
 - [ ] Finalise project documentation  
 
 ---
@@ -98,12 +98,14 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 
 The application currently supports:  
 
-- Viewing bookings
+- Viewing all  hotel bookings
 - Creating new bookings
-- Displaying bookings grid
-- Automatically assigning room prices
-- Recording breakfast choice
-- Checking 'Galway city' weather  
+- Displaying bookings in a responsive grid layout
+- Automatically assigning room prices based on selected room type
+- Recording breakfast choice as Bed & Breakfast (BB) or Room Only (RO)
+- Updating the total price according to the selected breakfast option
+- Updating existing bookings using the booking ID
+- Checking Galway city weather for a selected stay date
 - Running locally and on PythonAnywhere
 
 ---

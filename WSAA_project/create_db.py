@@ -28,16 +28,16 @@ CREATE TABLE bookings (
 
 # Sample data
 bookings = [
-    ("Layla", "Haddad", "Double", "2026-04-25", "2026-04-27", 2, "Morocco", 120.0, 1),
-    ("Amelia", "Clarke", "Single", "2026-05-01", "2026-05-03", 1, "Ireland", 80.0, 0),
-    ("Kenji", "Tanaka", "Double", "2026-05-04", "2026-05-08", 2, "Japan", 150.0, 1),
-    ("Sofia", "Martinez", "Suite", "2026-05-06", "2026-05-10", 3, "Spain", 200.0, 1),
-    ("Chloe", "Dubois", "Single", "2026-05-11", "2026-05-13", 1, "France", 90.0, 0),
-    ("Luca", "Bianchi", "Double", "2026-05-14", "2026-05-18", 2, "Italy", 140.0, 1),
-    ("Ava", "Murphy", "Suite", "2026-05-16", "2026-05-20", 4, "Ireland", 250.0, 1),
-    ("Noah", "Smith", "Single", "2026-05-18", "2026-05-21", 1, "USA", 100.0, 0),
-    ("Fatima", "Alami", "Double", "2026-05-20", "2026-05-24", 2, "Morocco", 120.0, 1),
-    ("Jonas", "Muller", "Single", "2026-05-22", "2026-05-25", 1, "Germany", 85.0, 0)
+    ("Layla", "Kays", "Claddagh Suite", "2026-04-25", "2026-04-27", 2, "Morocco", 180.0, 1),
+    ("Amelia", "Clarke", "Claddagh Suite", "2026-05-01", "2026-05-03", 1, "Ireland", 80.0, 0),
+    ("Kenji", "Tanaka", "Claddagh Suite", "2026-05-04", "2026-05-08", 2, "Japan", 150.0, 1),
+    ("Sofia", "Martinez", "Claddagh Suite", "2026-05-06", "2026-05-10", 3, "Spain", 200.0, 1),
+    ("Chloe", "Dubois", "Claddagh Suite", "2026-05-11", "2026-05-13", 1, "France", 90.0, 0),
+    ("Luca", "Bianchi", "Claddagh Suite", "2026-05-14", "2026-05-18", 2, "Italy", 140.0, 1),
+    ("Ava", "Murphy", "Claddagh Suite", "2026-05-16", "2026-05-20", 4, "Ireland", 250.0, 1),
+    ("Noah", "Smith", "Claddagh Suite", "2026-05-18", "2026-05-21", 1, "USA", 100.0, 0),
+    ("Fatima", "Alami", "Claddagh Suite", "2026-05-20", "2026-05-24", 2, "Morocco", 120.0, 1),
+    ("Jonas", "Muller", "Red Zebra Twin", "2026-05-22", "2026-05-25", 1, "Germany", 85.0, 0)
 ]
 
 cursor.executemany("""

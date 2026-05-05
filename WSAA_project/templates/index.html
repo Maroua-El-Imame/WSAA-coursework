@@ -12,12 +12,13 @@
 <body>
 
 <div class="container">
-    <img src="{{ url_for('static', filename='images/hotel1.png') }}" alt="Hotel Image"> <!-- Add a hotel image for visual appeal -->
+    <!--<img src="{{ url_for('static', filename='images/hotel1.png') }}" alt="Hotel Image"> <!-- adding a hotel image for visual  -->
     <h1>Blue Bay Hotel    </h1>
 
     <p class="wave-line">~ ~ ~ ~ ~ ~ ~ ~</p> <!--decorative wave line for a coastal vibe-->
 
     <form id="bookingForm">
+    <input type="hidden" id="booking_id">
     <input type="text" id="first_name" placeholder="First name" required>
     <input type="text" id="last_name" placeholder="Last name" required>
 
@@ -40,13 +41,14 @@
     <option value="0">Room only</option>
     </select>
 
-    <button type="submit">Book Now </button>
+    <button type="submit" id="submitBtn">Book Now</button>
 </form>
 
 <!-- Button row for showing bookings and checking weather -->
 
    <div class="button-row">
     <button id="loadBtn" type="button">Show Bookings</button>
+    <button id="editBtn" type="button">Edit Bookings</button>
     <button id="weatherBtn" type="button">Check Weather</button>
 </div>
 
@@ -70,6 +72,7 @@
 </div>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
 
 </body>
 </html>

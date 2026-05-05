@@ -44,10 +44,14 @@ class BookingDAO:
                 "check_in": row[4],
                 "check_out": row[5],
                 "guests": row[6],
-                "guest_country": row[7]
+                "guest_country": row[7],
+                "price_per_night": row[8],
+                "breakfast": row[9]
             })
 
         return bookings
+
+
 
     # GET ONE BOOKING BY ID
     def findByID(self, id):
@@ -76,11 +80,13 @@ class BookingDAO:
             "guest_country": row[7]
         }
 
+
+
     # CREATE BOOKING
     def create(self, booking):
         cursor = self.getcursor()
 
-        sql = f""""
+        sql = f"""
         INSERT INTO bookings 
         (first_name, last_name, room_type, check_in, check_out, guests, guest_country, price_per_night, breakfast)
         VALUES (
@@ -105,6 +111,8 @@ class BookingDAO:
         self.closeAll()
         return booking
 
+
+
     # UPDATE BOOKING
     def update(self, id, booking):
         conn = sqlite3.connect(self.database)
@@ -118,7 +126,7 @@ class BookingDAO:
                 check_in = "{booking.get("check_in")}",
                 check_out = "{booking.get("check_out")}",
                 guests = {booking.get("guests")},
-                guest_country = "{booking.get("guest_country")}"
+                guest_country = "{booking.get("guest_country")}",
                 price_per_night = {booking.get("price_per_night")},
                 breakfast = {booking.get("breakfast")}  
             WHERE booking_id = {id}
@@ -132,6 +140,8 @@ class BookingDAO:
 
         booking["booking_id"] = id
         return booking
+
+
 
     # DELETE BOOKING
     def delete(self, id):
