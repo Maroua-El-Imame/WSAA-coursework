@@ -10,7 +10,7 @@ Blue Bay Hotel,
  4 Lighthouse Lane,  
 Galway Bay, Ireland
 
-🌀 **Step inside Blue Bay Hotel:** [Visit the web page](https://maeli.pythonanywhere.com/)
+🌀 **Step inside Blue Bay Hotel:** [Visit the web page](https://.pythonanywhere.com/)
 
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
