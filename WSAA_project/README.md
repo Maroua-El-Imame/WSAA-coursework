@@ -183,9 +183,17 @@ cd ~/WSAA-coursework
 ``` bash 
 git pull
 ```
-6. Go to the Web tab in PythonAnywhere.
-7. Open the web app.
-8. Reload the web app to apply the latest changes.  
+
+6. On PythonAnywhere, after pulling the project, run:
+
+```bash
+python create_db.py
+```
+
+
+7. Go to the Web tab in PythonAnywhere.
+8. Open the web app.
+9. Reload the web app to apply the latest changes.  
 <br>
 
 **! Note** On PythonAnywhere, the application is served through the Web tab and WSGI configuration.  
