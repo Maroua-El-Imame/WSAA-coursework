@@ -1,6 +1,7 @@
 # Booking DAO (Data Access Object) - interacts with the database to perform CRUD operations for bookings.
 # Author: Maroua EL imame
 
+
 import sqlite3
 import dbconfig as cfg
 import os
@@ -32,8 +33,6 @@ class BookingDAO:
 
         self.closeAll()
 
-
-
         bookings = []
         for row in rows:
             bookings.append({
@@ -50,8 +49,6 @@ class BookingDAO:
             })
 
         return bookings
-
-
 
     # GET ONE BOOKING BY ID
     def findByID(self, id):
@@ -79,8 +76,6 @@ class BookingDAO:
             "guests": row[6],
             "guest_country": row[7]
         }
-
-
 
     # CREATE BOOKING
     def create(self, booking):
@@ -111,8 +106,6 @@ class BookingDAO:
         self.closeAll()
         return booking
 
-
-
     # UPDATE BOOKING
     def update(self, id, booking):
         conn = sqlite3.connect(self.database)
@@ -141,15 +134,45 @@ class BookingDAO:
         booking["booking_id"] = id
         return booking
 
-
-
     # DELETE BOOKING
     def delete(self, id):
         conn = sqlite3.connect(self.database)
         cursor = conn.cursor()
 
         cursor.execute("DELETE FROM bookings WHERE booking_id = ?", (id,))
+        deleted_rows = cursor.rowcount
+
         conn.commit()
         conn.close()
 
-        return {"deleted": id}
+        if deleted_rows == 0:
+            return {"message": "Booking not found"}
+
+        return {
+            "message": "Booking deleted successfully",
+            "deleted": id
+        }
+    
+    # GET BOOKINGS BY COUNTRY
+    def getBookingsByCountry(self):
+        conn = sqlite3.connect(self.database)
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT guest_country, COUNT(*) 
+            FROM bookings
+            GROUP BY guest_country
+            ORDER BY COUNT(*) DESC
+        """)
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        countries = []
+        for row in rows:
+            countries.append({
+                "country": row[0],
+                "count": row[1]
+            })
+
+        return countries

@@ -6,11 +6,10 @@ app = Flask(__name__)
 
 bookingDAO = BookingDAO()
 
-
+# Home route
 @app.route("/")
 def home():
     return render_template("index.html")
-
 
 # Weather API route
 @app.route("/weather")
@@ -64,6 +63,12 @@ def getAll():
     return jsonify(bookingDAO.getAll())
 
 
+# get booking count by guest country
+@app.route('/bookings/by-country')
+def getBookingsByCountry():
+    return jsonify(bookingDAO.getBookingsByCountry())
+
+
 # find booking by id
 @app.route('/bookings/<int:id>')
 def findById(id):
@@ -95,6 +100,6 @@ def delete(id):
     result = bookingDAO.delete(id)
     return jsonify(result)
 
-
+# run the app
 if __name__ == '__main__':
     app.run(debug=True)

@@ -23,36 +23,31 @@ Atlantic Technological University - ATU Galway Mayo 2025/2026.
 
 Author : Maroua EL imame
 
-Submission deadline : /05/2026
+Submission deadline : 14/05/2026
 
 <br>
 <br>
 
 
-### Introduction
+## Introduction
 
-This project implements a hotel booking web application using Flask, SQLite and a structured Data Access Object (DAO) layer.
+Blue Bay Hotel is a hotel booking web application developed using Flask, SQLite, HTML, CSS, and JavaScript.
+The project follows a simple modular structure, with separate files for the Flask server, database logic, frontend design, and browser interactions.
 
-The application follows a modular architecture. The Flask server handles client requests and API routes, while the DAO layer manages data operations separately. 
+## Features
 
-This separation keeps the code cleaner, easier to maintain, and closer to the structure used in real-world backend applications.
-
-
----
-
-## Project Overview  
-
-Blue Bay Hotel is a Flask web application that allows users to view and create hotel bookings through a browser interface.   
-
-The project includes:
-
-- A frontend interface for viewing and creating bookings
-- CRUD operations for managing bookings, with create and read implemented and update/delete started in the DAO/API structure
-- A SQLite `bookings` table for storing booking records
-- Automatic room price logic
-- Breakfast choice recording
-- Current Galway weather display using a Weather API
-- Deployment and testing on PythonAnywhere
+- Hotel booking management system
+- Dynamic room pricing
+- Breakfast price calculation
+- Booking editing functionality
+- Delete booking functionality
+- Weather forecast integration
+- Guest country analytics chart
+- SQLite database storage
+- Backend API routes
+- Responsive frontend interface
+- Collapsible interface sections for bookings, weather, and analytics
+- PythonAnywhere deployment
 
 
 ## Technologies Used
@@ -63,6 +58,9 @@ The project includes:
 | Database | SQLite |
 | Frontend | HTML, CSS, JavaScript |
 | API Requests | Fetch API |
+| Database Operations | CRUD Operations |
+| Architecture | DAO Pattern |
+| Data Visualisation | Chart.js |
 | Deployment | PythonAnywhere |
 | Version Control | Git, GitHub |
 
@@ -87,9 +85,11 @@ project-folder/
 │   └── index.html         # Main webpage
 │
 └── static/
-    ├── style.css          # Page styling
-    ├── app.js             # Page actions and API calls
-    └── images/            # Images used in the website
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── app.js          # Page actions, API calls, weather feature, and chart rendering
+    └── images/             # Images used in the website
 
 ```  
 
@@ -124,7 +124,7 @@ Download the project from GitHub:
 > 3. From the dropdown menu, click **Download ZIP**.
 > 4. Extract the ZIP folder.
 > 5. Open the extracted repository folder.
-> 6. Open the `WSAA_project` folder in Comand line or VScode. 
+> 6. Open the `WSAA_project` folder in Command line or VScode. 
 > 
 ></br>  
 <br>
@@ -160,23 +160,23 @@ Example:
 http://127.0.0.1:5000
 ```
 
-### Deployment Setup  
+### Deployment  
 
 The project was also deployed and tested on PythonAnywhere.
 
 
 1. Create a free [PythonAnywhere](https://www.pythonanywhere.com/) account.
 2. Open a Bash console in PythonAnywhere.
-3. Clone the GitHub repository using: 
+3. Clone the GitHub repository using:  
+  Example:
 
 ```bash
-Example:
 git clone https://github.com/Maroua-El-Imame/WSAA-coursework.git
 ```
-4. Move into the repository folder:
+4. Move into the repository folder:  
+Example:
 
 ```bash
-Example:
 cd ~/WSAA-coursework
 ```
 5. Pull the latest project changes from GitHub:
@@ -211,9 +211,21 @@ Additional resources were used to support syntax, examples, and further understa
 - [Flask documentation](https://flask.palletsprojects.com/en/stable/deploying/)
 - [Open-Meteo Weather API documentation](https://open-meteo.com/en/docs)
 - [Python sqlite3 documentation](https://docs.python.org/3/library/sqlite3.html)
+- [MDN HTML documentation](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [MDN CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [MDN JavaScript documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [MDN Fetch API documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [MDN HTML form elements](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+- [MDN CSS Flexbox guide](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox)
+- [Chart.js documentation](https://www.chartjs.org/docs/latest/)
 - [GeeksforGeeks](https://www.geeksforgeeks.org/python/flask-tutorial/)
 - [W3schools](https://www.w3schools.com/python/ref_module_sqlite3.asp)
 
+<br>  
+
+-ChatGPT: used for debugging support, code explanation, feature planning, and understanding how Flask, HTML, CSS, and JavaScript interact.  
+-GitHub Copilot: used for code suggestions, autocomplete support, and syntax assistance during development.  
+-AI tools were used as support during the learning process, but the final code was reviewed, tested, adapted, and organised to fit the project requirements.  
 <br>  
 
 ## Contact

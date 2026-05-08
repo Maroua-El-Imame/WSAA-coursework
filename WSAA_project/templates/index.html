@@ -6,16 +6,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-
-
-
 <body>
+
+<!-- ===== PAGE CONTAINER ===== -->
 
 <div class="container">
     <!--<img src="{{ url_for('static', filename='images/hotel1.png') }}" alt="Hotel Image"> <!-- adding a hotel image for visual  -->
-    <h1>Blue Bay Hotel    </h1>
+    <h1>Blue Bay Hotel</h1>
 
     <p class="wave-line">~ ~ ~ ~ ~ ~ ~ ~</p> <!--decorative wave line for a coastal vibe-->
+
+<!-- ===== BOOKING FORM ===== -->
 
     <form id="bookingForm">
     <input type="hidden" id="booking_id">
@@ -30,38 +31,65 @@
     <option value="Red Zebra Twin">Red Zebra Twin</option>
 </select>
 
-    <input type="date" id="check_in" required>
-    <input type="date" id="check_out" required>
+    <input type="date" id="check_in" onkeydown="return false">
+    <input type="date" id="check_out" onkeydown="return false">
     <input type="number" id="guests" placeholder="Guests" required>
-    <input type="text" id="guest_country" placeholder="Country" required>
+    <select id="guest_country" required>
+    <option value="">Select country</option>
+
+    <option value="Ireland">Ireland</option>
+    <option value="France">France</option>
+    <option value="Spain">Spain</option>
+    <option value="Italy">Italy</option>
+    <option value="Germany">Germany</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States">United States</option>
+    <option value="Canada">Canada</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Australia">Australia</option>
+    <option value="Greece">Greece</option>
+    <option value="Egypt">Egypt</option>
+</select>
+
 
     <input type="number" id="price_per_night" placeholder="Price per night (select room first)" required readonly>    <!-- This will be auto-filled based on room selection , read only option-->
     <select id="breakfast">
-    <option value="1" selected>Breakfast included (+€15pp)</option>
+    <option value="1" selected> Breakfast (+€15pp)</option>
     <option value="0">Room only</option>
     </select>
 
     <button type="submit" id="submitBtn">Book Now</button>
 </form>
 
-<!-- Button row for showing bookings and checking weather -->
+<!-- ===== ACTION BUTTONS ===== -->
 
    <div class="button-row">
     <button id="loadBtn" type="button">Show Bookings</button>
     <button id="editBtn" type="button">Edit Bookings</button>
+    <button id="deleteModeBtn" type="button">Delete Booking</button>
     <button id="weatherBtn" type="button">Check Weather</button>
 </div>
 
+<!-- ===== COUNTRY CHART SECTION ===== -->
+
+<section class="chart-section">
+    <h2>They Came From Around the World</h2>
+
+    <button id="chartBtn" type="button">
+    Show Guest Country Chart
+</button>
+
+<canvas id="countryChart"></canvas>
+</section>
 
 
+<!-- ===== BOOKINGS DISPLAY ===== -->
 
-<!-- Bookings display section -->
     <div id="bookings"></div>
     
     <button id="backBtn" type="button" style="display: none;">Hide Bookings</button>
 
-<!-- Weather section -->
-
+<!-- ===== WEATHER SECTION ===== -->
 
 <section class="weather-section">
     <h2>Check Galway Weather for Your Stay</h2>
@@ -71,6 +99,10 @@
 </section>
 </div>
 
+
+<!-- ===== JAVASCRIPT FILE ===== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 

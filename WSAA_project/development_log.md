@@ -30,20 +30,21 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 - [x] Implemented `findByID()` method  
 - [x] Implemented  `create()`
 - [x] Implemented `update()` functionality
-- [ ] Implemented `delete()`
+- [x] Implemented `delete()`
 - [x] Testing DAO independently  
 
 ---  
 
 ### 4. Flask Server
 
-- [x] Created Flask server file: (`main.py`)
+- [x] Created Flask server file: (`server.py`)
 - [x] Created homepage route
 - [x] Created `/bookings` API route
+- [x] Created `/bookings/by-country` API route for analytics
 - [x] Connected Flask routes to DAO methods
 - [x] Returned booking data as JSON
 - [x] Tested API route in browser  
-- [ ] Implement error handling  
+- [x] Implemented error handling  
 
 ---
 
@@ -58,8 +59,10 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 - [x] Added room price logic
 - [x] Added breakfast option
 - [x] Add update functionality through the interface
-- [ ] Add delete functionality through the interface
-- [~] Improve user Experience
+- [x] Add delete functionality through the interface
+- [x] Improve user Experience
+- [x] Added collapsible interface sections for bookings, weather, and analytics
+- [x] Added Chart.js pie chart for guest country distribution
 
 ---
 
@@ -74,23 +77,20 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 ### 7. Additional Features
 
 - [x] Added Weather API feature
-- [x] Displayed current 'Galway' weather information in the user interface
+- [x] Displayed 'Galway' weather forecast information based on selected check-in date.
+- [x] Added guest country analytics chart
+- [x] Displayed guest country distribution using a pie chart
+- [x] Added percentage tooltips to the chart
 
-*!! Potential Future Features*
-
-- [ ] Add availability feature
-- [ ] Add rooms section
-- [ ] Add guest country/provenance feature
-- [ ] Explore additional analysis features such as bookings by date or guest country summary
 
 ---
 
 ### 8. Final Improvements
 
 - [x] Improve layout and spacing
-- [ ] Final testing
+- [x] Final testing
 - [x] Final README update
-- [ ] Finalise project documentation  
+- [x] Finalise project documentation  
 
 ---
 
@@ -105,7 +105,10 @@ The application currently supports:
 - Recording breakfast choice as Bed & Breakfast (BB) or Room Only (RO)
 - Updating the total price according to the selected breakfast option
 - Updating existing bookings using the booking ID
+- Deleting existing bookings using the booking ID
 - Checking Galway city weather for a selected stay date
+- Viewing guest country distribution using a Chart.js pie chart
+- Switching between bookings, weather, and analytics sections
 - Running locally and on PythonAnywhere
 
 ---
