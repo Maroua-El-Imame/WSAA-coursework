@@ -119,8 +119,6 @@ class BookingDAO:
         if breakfast == 1:
             price_per_night += 15 * guests
 
-        
-
 
         sql = f"""
         INSERT INTO bookings 

@@ -1,5 +1,7 @@
 # Blue Bay Hotel 
-[Hotel booking **live application**](https://maeli.pythonanywhere.com/)
+Hotel booking **live application**  
+https://maeli.pythonanywhere.com  
+<br>
 
 Lecturer : Andrew Beatty  
 Web Services and Applications S1-2026  
@@ -27,7 +29,7 @@ Galway Bay, Ireland
 
 ## Introduction
 
-Blue Bay Hotel is a hotel booking web application developed using Flask, SQLite, HTML, CSS, and JavaScript.
+Blue Bay Hotel is a hotel booking web application developed using Flask, SQLite, HTML, CSS, and JavaScript.  
 The project follows a simple modular structure, with separate files for the Flask server, database logic, frontend design, and browser interactions.
 
 ## Features

@@ -80,7 +80,6 @@ This log records the main development stages of the Blue Bay Hotel booking appli
 - [x] Displayed 'Galway' weather forecast information based on selected check-in date.
 - [x] Added guest country analytics chart
 - [x] Displayed guest country distribution using a pie chart
-- [x] Added percentage tooltips to the chart
 
 
 ---

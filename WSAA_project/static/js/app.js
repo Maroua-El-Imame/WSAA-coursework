@@ -129,19 +129,6 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
         return;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     const bookingId = document.getElementById("booking_id").value;
     let url = "/bookings";
     let method = "POST";
@@ -316,6 +303,7 @@ document.getElementById("weatherBackBtn").addEventListener("click", () => {
 });
 
 // ===== EDIT BOOKING =====
+// Loads selected booking into the form for editing / but the actual update is handled by the form submit (PUT request).
 
 document.getElementById("editBtn").addEventListener("click", async () => {
     document.getElementById("countryChart").style.display = "none";

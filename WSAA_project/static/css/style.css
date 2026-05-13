@@ -170,8 +170,8 @@ button:hover {
 
 /* ===== SPECIAL STATES ===== */
 .editing-input {
-    background: rgba(212, 175, 55, 0.2) !important;  /* stronger gold */
-    border: 2px solid #facc15 !important;           /* brighter gold */
+    background: rgba(212, 175, 55, 0.2) !important; 
+    border: 2px solid #facc15 !important;          
     color: white;
 
     box-shadow: 0 0 12px rgba(250, 204, 21, 0.9),
