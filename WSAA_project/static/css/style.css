@@ -1,7 +1,7 @@
 /* ===== GENERAL PAGE STYLING ===== */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #7b7bcd09, #fcfcfc01);
+    background: linear-gradient(to bottom, #010110fe, #030125f8);
     margin: 0;
 }
 
@@ -18,7 +18,7 @@ body {
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 40px;
-  color: #000075;
+  color: #d8971edc;
   letter-spacing: 2px;
   text-align: center;
 }
@@ -26,7 +26,7 @@ h1 {
 .wave-line {
   text-align: center;
   font-size: 22px;
-  color: #0A1F44;
+  color: #d4af37;
   letter-spacing: 8px;
   margin: 10px 0 20px;
   opacity: 0.8;
@@ -35,8 +35,8 @@ h1 {
 /* ===== HERO IMAGE ===== */
 
 img {
-  width: 700px;
-  height: 300px;
+  width: 1000px;
+  height: 400px;
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -50,10 +50,10 @@ img {
     gap: 15px;
     margin: 25px auto;
     max-width: 1100px;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(11, 47, 79, 0.9);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 25px rgba(146, 100, 100, 0.06);
 }
 
 #bookingForm button[type="submit"] {
@@ -84,29 +84,35 @@ img {
 }
 
 button {
-    margin-bottom: 18px;       
-    width: 100%;          
-    max-width: 300px;      
-    padding: 12px 20px;    
-    border-radius: 25px;   
+    width: 320px;          
+    max-width: 320px;    
+    padding: 14px 20px;    
+    border-radius: 30px;   
     border: none;
-    font-size: 16px;
+
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    background: linear-gradient(135deg, #4f46e5, #6d28d9);
-    color: white;
+
+    background: linear-gradient(135deg, #d4af37, #b8962e);
+    color:  #0b2f4f;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28);
     transition: 0.25s ease;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #312e81, #4f46e5);
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #312e81, #5b21b6);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
 }
 
 #backBtn {
-    width: 100%;
-    max-width: 300px;
+
     margin: 15px auto;
     display: none;
+    text-align: center;
+
 }
 
 
@@ -125,7 +131,7 @@ button:hover {
     background: white;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(182, 83, 83, 0.1);
     text-align: left;
 }
 
@@ -137,17 +143,20 @@ button:hover {
     margin: 15px auto;
 }
 
-/* Weather section styling */
-
 .weather-section {
     display: none;
     margin-top: 30px;
     text-align: center;
 }
 
+.weather-section h2,
+.weather-section p {
+    color: rgba(228, 228, 174, 0.512);
+}
+
 .weather-note {
     font-size: 0.95rem;
-    color: #555;
+    color: #5555551d;
 }
 
 .weather-card {
@@ -155,45 +164,99 @@ button:hover {
     padding: 20px;
     max-width: 420px;
     border-radius: 15px;
-    background: #f5f5f5;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #facc1581;
+    box-shadow: 0 4px 12px rgba(231, 228, 243, 0.08);
 }
 
 /* ===== SPECIAL STATES ===== */
-
 .editing-input {
-    background-color: #fff8e7 !important;
-    border: 2px solid #f59e0b !important;
-    transition: 0.3s ease;
+    background: rgba(212, 175, 55, 0.2) !important;  /* stronger gold */
+    border: 2px solid #facc15 !important;           /* brighter gold */
+    color: white;
+
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.9),
+                0 0 25px rgba(250, 204, 21, 0.4);
+
+    animation: pulseGlow 1.5s infinite;
 }
 
-.delete-btn {
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(250, 204, 21, 1);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+    }
+}
+
+button.delete-btn {
     background: linear-gradient(135deg, #b91c1c, #ef4444);
+    color: white !important;
 }
 
-.delete-btn:hover {
+button.delete-btn:hover {
     background: linear-gradient(135deg, #7f1d1d, #dc2626);
+
 }
 
 /* ===== COUNTRY CHART SECTION ===== */
 
+
+.chart-section * {
+    position: relative;
+    z-index: 1;
+}
+
 .chart-section {
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(255,255,255,0.6);
+    position: relative;
+    margin-top: 60px;
+    padding: 80px 20px;
     border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     text-align: center;
+
+    background-color: #0b2f4f; 
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.chart-section::before {
+    content: "";
+    position: absolute;
+    left: -17%;
+    bottom: -50%;
+    width: 120%;
+    height: 175%;
+
+    background-image: url("/static/images/worldmap.png");
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+    background-size: cover;            
+
+    opacity: 0.18;                      
+    filter: brightness(1.2);             
+
+}
+
+.chart-section * {
+    position: relative;
+    z-index: 1;
 }
 
 .chart-section h2 {
-    color: #0A1F44;
-    margin-bottom: 20px;
+    color: #d8971edc;
+    margin-bottom: 50px;
 }
 
+
 #countryChart {
-    width: 100%;
+    width: 125%;
     max-width: 500px;
     margin: 20px auto;
     display: block;
+    background: transparent;          
+    border-radius: 12px;       
+    padding: 40px;              
 }

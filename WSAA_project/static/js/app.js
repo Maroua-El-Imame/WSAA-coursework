@@ -35,6 +35,7 @@ document.getElementById("breakfast").addEventListener("change", updatePrice);
 async function loadBookings(showDelete = false) {
     const res = await fetch("/bookings");
     const data = await res.json();
+    data.sort((a, b) => a.booking_id - b.booking_id);
 
     const container = document.getElementById("bookings");
     container.innerHTML = "";
@@ -101,6 +102,46 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
         breakfast: parseInt(document.getElementById("breakfast").value)
     };
 
+    
+    // FRONTEND VALIDATION 
+    // Guests
+    if (booking.guests < 1 || booking.guests > 2) {
+        alert("Guests must be between 1 and 2");
+        return;
+    }
+
+    // Dates
+    const today = new Date();
+    const checkIn = new Date(booking.check_in);
+    const checkOut = new Date(booking.check_out);
+
+    today.setHours(0,0,0,0);
+    checkIn.setHours(0,0,0,0);
+    checkOut.setHours(0,0,0,0);
+
+    if (checkIn < today) {
+        alert("Check-in must be today or a future date");
+        return;
+    }
+
+    if (checkOut <= checkIn) {
+        alert("Check-out must be at least 1 day after check-in");
+        return;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const bookingId = document.getElementById("booking_id").value;
     let url = "/bookings";
     let method = "POST";
@@ -110,7 +151,8 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
         method = "PUT";
     }
 
-    await fetch(url, {
+    const response = await fetch(url, {
+
         method: method,
         headers: {
             "Content-Type": "application/json"
@@ -118,6 +160,17 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
         body: JSON.stringify(booking)
     });
 
+    const data = await response.json();
+
+    if (!response.ok) {
+        alert(data.error);
+        return;
+    }
+
+    alert(bookingId ? "Booking updated successfully" : "Booking created successfully");
+    document.getElementById("countryChart").style.display = "none";
+    if (window.countryChart instanceof Chart) window.countryChart.destroy();
+    
     document.getElementById("bookingForm").reset();
     document.getElementById("booking_id").value = "";
     document.getElementById("submitBtn").textContent = "Book Now";
@@ -127,7 +180,8 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
     });
 
     await loadBookings(false);
-    document.getElementById("backBtn").style.display = "inline-block";
+    document.getElementById("backBtn").style.display = "block";
+    scrollToBottom();
 });
 
 // ===== BACK BUTTON FOR BOOKINGS =====
@@ -135,7 +189,7 @@ document.getElementById("bookingForm").addEventListener("submit", async (event) 
 document.getElementById("backBtn").addEventListener("click", () => {
     document.getElementById("bookings").style.display = "none";
     document.getElementById("backBtn").style.display = "none";
-    
+    scrollToBottom();
 
 });
 
@@ -191,6 +245,9 @@ document.getElementById("weatherBtn").addEventListener("click", async () => {
     document.getElementById("backBtn").style.display = "none";
     document.getElementById("countryChart").style.display = "none";
 
+    if (window.countryChart instanceof Chart) {
+        window.countryChart.destroy();
+    }           
     const checkInDate = document.getElementById("check_in").value;
     const weatherResult = document.getElementById("weatherResult");
     const weatherSection = document.querySelector(".weather-section");
@@ -261,7 +318,11 @@ document.getElementById("weatherBackBtn").addEventListener("click", () => {
 // ===== EDIT BOOKING =====
 
 document.getElementById("editBtn").addEventListener("click", async () => {
-    await loadBookings();
+    document.getElementById("countryChart").style.display = "none";
+
+    if (window.countryChart instanceof Chart) {
+        window.countryChart.destroy();
+    }
 
     const res = await fetch("/bookings");
     const data = await res.json();
@@ -387,17 +448,16 @@ document.getElementById("chartBtn").addEventListener("click", async () => {
 
             datasets: [{
     data: counts,
-
     backgroundColor: [
         "#4DA8DA",
         "#FF6B8A",
         "#FFA94D",
-        "#FFD166",
+        "#cc66ff",
         "#5DD39E",
         "#9B5DE5",
         "#B8B8C0",
         "#3FA7F0",
-        "#F15BB5",
+        "#bf5bf1",
         "#00C2A8",
         "#FF9F1C",
         "#6C63FF",
@@ -405,36 +465,30 @@ document.getElementById("chartBtn").addEventListener("click", async () => {
         "#06D6A0",
         "#118AB2",
         "#8338EC",
-        "#FB5607",
+        "#2c07fb50",
         "#3A86FF",
         "#FFBE0B",
         "#70E000"
     ],
-
-    borderWidth: 5,
+    borderWidth: 10,
+    borderColor: "transparent",
     spacing: 8
 }]
         },
-
         options: {
-            plugins: {
-                legend: {
-                    position: "bottom"
-                },
-
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-
-                            const percentage =
-                                ((context.raw / total) * 100).toFixed(1);
-
-                            return `${context.label}: ${percentage}%`;
-                        }
-                    }
+    plugins: {
+        legend: {
+            position: "bottom",
+            labels: {
+                color: "#ffffff",
+                font: {
+                    size: 12,
+                    weight: "500"
                 }
             }
         }
+    }
+}
     });
 scrollToBottom();
 });

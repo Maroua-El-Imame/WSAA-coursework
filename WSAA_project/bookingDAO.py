@@ -5,6 +5,14 @@
 import sqlite3
 import dbconfig as cfg
 import os
+from datetime import datetime
+
+ROOM_TYPES = {
+    "Claddagh Suite": 180,
+    "Blue Bay Rooftop": 220,
+    "Royal Green": 200,
+    "Red Zebra Twin": 160
+}
 
 class BookingDAO:
     connection = ""
@@ -57,8 +65,8 @@ class BookingDAO:
 
         cursor.execute("""
         SELECT * FROM bookings
-        ORDER BY last_name, first_name, check_in
-        """)
+        WHERE booking_id = ?
+        """, (id,))
         row = cursor.fetchone()
 
         conn.close()
@@ -74,12 +82,45 @@ class BookingDAO:
             "check_in": row[4],
             "check_out": row[5],
             "guests": row[6],
-            "guest_country": row[7]
+            "guest_country": row[7],
+            "price_per_night": row[8],
+            "breakfast": row[9] 
         }
-
+    
     # CREATE BOOKING
     def create(self, booking):
         cursor = self.getcursor()
+
+        room_type = booking.get("room_type")
+        guests = int(booking.get("guests"))
+        breakfast = int(booking.get("breakfast"))
+
+        check_in = booking.get("check_in")
+        check_out = booking.get("check_out")
+
+        check_in_date = datetime.strptime(check_in, "%Y-%m-%d")
+        check_out_date = datetime.strptime(check_out, "%Y-%m-%d")
+        today = datetime.today()
+
+        if room_type not in ROOM_TYPES:
+            raise ValueError("Invalid room type")
+
+        if guests < 1 or guests > 2:
+            raise ValueError("Guests must be between 1 and 2")
+
+        if check_in_date.date() < today.date():
+            raise ValueError("Check-in must be today or a future date")
+
+        if check_out_date <= check_in_date:
+            raise ValueError("Check-out must be at least 1 day after check-in")
+
+        price_per_night = ROOM_TYPES[room_type]
+
+        if breakfast == 1:
+            price_per_night += 15 * guests
+
+        
+
 
         sql = f"""
         INSERT INTO bookings 
@@ -87,21 +128,24 @@ class BookingDAO:
         VALUES (
             "{booking.get("first_name")}",
             "{booking.get("last_name")}",
-            "{booking.get("room_type")}",
+            "{room_type}",
             "{booking.get("check_in")}",
             "{booking.get("check_out")}",
-            {booking.get("guests")},
+             {guests},
             "{booking.get("guest_country")}",
-            {booking.get("price_per_night")},
-            {booking.get("breakfast")}
-        )"""
+            {price_per_night},
+            {breakfast}
+    )
+    """
 
-        print(sql)
+        print(sql) 
         cursor.execute(sql)
     
         self.connection.commit()
         new_id = cursor.lastrowid
         booking["booking_id"] = new_id
+        booking["price_per_night"] = price_per_night
+
 
         self.closeAll()
         return booking
@@ -111,6 +155,35 @@ class BookingDAO:
         conn = sqlite3.connect(self.database)
         cursor = conn.cursor()
 
+        room_type = booking.get("room_type")
+        guests = int(booking.get("guests"))
+        breakfast = int(booking.get("breakfast"))
+
+        check_in = booking.get("check_in")
+        check_out = booking.get("check_out")
+
+        check_in_date = datetime.strptime(check_in, "%Y-%m-%d")
+        check_out_date = datetime.strptime(check_out, "%Y-%m-%d")
+        today = datetime.today()
+
+        if room_type not in ROOM_TYPES:
+            raise ValueError("Invalid room type")
+
+        if guests < 1 or guests > 2:
+            raise ValueError("Guests must be between 1 and 2")
+
+        if check_in_date.date() < today.date():
+            raise ValueError("Check-in must be today or a future date")
+
+        if check_out_date <= check_in_date:
+            raise ValueError("Check-out must be at least 1 day after check-in")
+
+        price_per_night = ROOM_TYPES[room_type]
+
+        if breakfast == 1:
+            price_per_night += 15 * guests
+
+        
         sql = f"""
         UPDATE bookings SET
                 first_name = "{booking.get("first_name")}",
@@ -120,7 +193,7 @@ class BookingDAO:
                 check_out = "{booking.get("check_out")}",
                 guests = {booking.get("guests")},
                 guest_country = "{booking.get("guest_country")}",
-                price_per_night = {booking.get("price_per_night")},
+                price_per_night = {price_per_night},
                 breakfast = {booking.get("breakfast")}  
             WHERE booking_id = {id}
         """

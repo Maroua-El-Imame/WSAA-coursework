@@ -81,17 +81,24 @@ def findById(id):
 # create booking
 @app.route('/bookings', methods=['POST'])
 def create():
-    booking = request.json
-    new_booking = bookingDAO.create(booking)
-    return jsonify(new_booking)
+    try:
+        booking = request.json
+        new_booking = bookingDAO.create(booking)
+        return jsonify(new_booking), 200
+    except ValueError as e: 
+        return jsonify({"error": str(e)}), 400
+
 
 
 # update booking
 @app.route('/bookings/<int:id>', methods=['PUT'])
 def update(id):
-    booking = request.json
-    updated_booking = bookingDAO.update(id, booking)
-    return jsonify(updated_booking)
+    try:    
+        booking = request.json
+        updated_booking = bookingDAO.update(id, booking)
+        return jsonify(updated_booking)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400  
 
 
 # delete booking

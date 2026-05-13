@@ -11,11 +11,9 @@
 <!-- ===== PAGE CONTAINER ===== -->
 
 <div class="container">
-    <!--<img src="{{ url_for('static', filename='images/hotel1.png') }}" alt="Hotel Image"> <!-- adding a hotel image for visual  -->
+    <img src="{{ url_for('static', filename='images/image_paw.png') }}" alt="Hotel Image"> <!-- adding a hotel image for visual  -->
     <h1>Blue Bay Hotel</h1>
-
-    <p class="wave-line">~ ~ ~ ~ ~ ~ ~ ~</p> <!--decorative wave line for a coastal vibe-->
-
+    <div class="wave-line">☆ ☆ ☆ ☆ ☆</div>
 <!-- ===== BOOKING FORM ===== -->
 
     <form id="bookingForm">
@@ -70,26 +68,10 @@
     <button id="weatherBtn" type="button">Check Weather</button>
 </div>
 
-<!-- ===== COUNTRY CHART SECTION ===== -->
-
-<section class="chart-section">
-    <h2>They Came From Around the World</h2>
-
-    <button id="chartBtn" type="button">
-    Show Guest Country Chart
-</button>
-
-<canvas id="countryChart"></canvas>
-</section>
-
-
-<!-- ===== BOOKINGS DISPLAY ===== -->
-
-    <div id="bookings"></div>
-    
-    <button id="backBtn" type="button" style="display: none;">Hide Bookings</button>
+<div id="editContainer"></div>
 
 <!-- ===== WEATHER SECTION ===== -->
+
 
 <section class="weather-section">
     <h2>Check Galway Weather for Your Stay</h2>
@@ -98,6 +80,28 @@
     <button id="weatherBackBtn" type="button" style="display: none;"> Hide Weather</button>
 </section>
 </div>
+
+
+<!-- ===== BOOKINGS DISPLAY ===== -->
+
+
+    <div id="bookings"></div>
+    
+    <button id="backBtn" type="button" style="display: none;">Hide Bookings</button>
+
+
+<!-- ===== COUNTRY CHART SECTION ===== -->
+
+<section class="chart-section">
+    <h2>They Visited From Around the World</h2>
+
+    <button id="chartBtn" type="button">
+    Show Guest Country Chart
+</button>
+
+<canvas id="countryChart"></canvas>
+</section>
+
 
 
 <!-- ===== JAVASCRIPT FILE ===== -->

@@ -1,20 +1,5 @@
-# Blue Bay Hotel
-
-
-<p align="left">
-  <img src="static/images/" alt="" width="100%" height=50>
-</p>
-
-**Address:** (fictional)    
-Blue Bay Hotel,  
- 4 Lighthouse Lane,  
-Galway Bay, Ireland
-
-🌀 **Step inside Blue Bay Hotel:** [Visit the web page](https://.pythonanywhere.com/)
-
-
-~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
-<br>
+# Blue Bay Hotel 
+Hotel booking web application
 
 Lecturer : Andrew Beatty  
 Web Services and Applications S1-2026  
@@ -24,10 +9,21 @@ Atlantic Technological University - ATU Galway Mayo 2025/2026.
 Author : Maroua EL imame
 
 Submission deadline : 14/05/2026
-
 <br>
-<br>
+<p align="left">
+  <img src="static/images/image.png" alt="" width="100%" height=40%>
+</p>
 
+**Address:** (fictional)    
+Blue Bay Hotel,  
+ 4 Lighthouse Lane,  
+Galway Bay, Ireland
+
+🌀 **Step inside Blue Bay Hotel:** [Visit the web page](https://maeli.pythonanywhere.com/)
+
+
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+<br>
 
 ## Introduction
 
