@@ -1,5 +1,5 @@
 # Blue Bay Hotel 
-Hotel booking web application
+[Hotel booking **live application**](https://maeli.pythonanywhere.com/)
 
 Lecturer : Andrew Beatty  
 Web Services and Applications S1-2026  
@@ -86,6 +86,9 @@ project-folder/
     ├── js/
     │   └── app.js          # Page actions, API calls, weather feature, and chart rendering
     └── images/             # Images used in the website
+        ├── image_paw.png 
+        ├── worldmap.png  
+        └── image.png     
 
 ```  
 
@@ -221,11 +224,21 @@ Additional resources were used to support syntax, examples, and further understa
 
 -ChatGPT: used for debugging support, code explanation, feature planning, and understanding how Flask, HTML, CSS, and JavaScript interact.  
 -GitHub Copilot: used for code suggestions, autocomplete support, and syntax assistance during development.  
+
+Prompts examples :  
+🔹 Validation & Logic  
+“How to restrict number of guests between 1 and 2 in JavaScript?”  
+“How to calculate hotel room price dynamically based on room type and optional breakfast?”  
+🔹 UI / UX Enhancements  
+“How to show and hide sections dynamically (weather, bookings, chart) without page reload?”  
+🔹 Weather API  
+“How to restrict weather forecast to a maximum of 15 days ahead?”  
+
 -AI tools were used as support during the learning process, but the final code was reviewed, tested, adapted, and organised to fit the project requirements.  
 <br>  
 
 ## Contact
 
-Maroua El imame  
+Maroua EL imame  
 Author and sole contributor  
 G00472980@atu.ie  
